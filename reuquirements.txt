@@ -1,0 +1,9 @@
+about-time==3.1.1
+alive-progress==2.4.1
+certifi==2022.5.18.1
+charset-normalizer==2.0.12
+grapheme==0.6.0
+idna==3.3
+requests==2.27.1
+urllib3==1.26.9
+Wikipedia-API==0.5.4
