@@ -5,9 +5,10 @@ sudo apt install python3
 # Install pip
 sudo apt install python3-pip
 
-echo "Downloading word list file..."
-# Download word list
-./src/download_wordlist.sh
+echo "Installing python packages..."
+# PIP
+pip install -r requirements.txt
+
 
 echo "Start crawling script..."
 # Start crawling
