@@ -1,3 +1,6 @@
 .obsidian
 venv
 examples
+wikipedia_raw
+.idea
+*.csv
