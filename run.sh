@@ -13,3 +13,13 @@ pip install -r requirements.txt
 echo "Start crawling script..."
 # Start crawling
 python3 ./src/crawler.py
+
+echo "Start preprocessing script..."
+# Add the script here
+
+echo "Start noise generator script..."
+# Add the script here
+
+echo "Start statistics script..."
+python3 ./src/statistics.py
+
