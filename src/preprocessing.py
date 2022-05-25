@@ -1,11 +1,9 @@
 from nltk import sent_tokenize
 from nltk.tokenize import TreebankWordTokenizer
 import csv
-import random
-import string
 import re
 import os
-from collections import Counter
+
 
 def tokenizer(sentence):
     return TreebankWordTokenizer().tokenize(sentence)
@@ -60,74 +58,15 @@ def preprocess(text):
     return tokenized
 
 
-def replace_noise(token, random_index):
-    c = token[random_index]
-    new_char = c
-    while c == new_char:
-        new_char = random.choice(string.ascii_letters)
-    return token[:random_index] + new_char + token[random_index + 1:]
-
-
-def extra_noise(token, random_index):
-    new_char = random.choice(string.ascii_letters)
-    return token[:random_index] + new_char + token[random_index + 1:]
-
-
-def eliminate_noise(token, random_index):
-    return token[:random_index] + token[random_index + 1:]
-
-
-def transposition_noise(token, random_index):
-    if random_index == 0:
-        random_index = 1
-    return token[:random_index-1] + token[random_index] + token[random_index-1]+token[random_index+1:]
-
-
-def change_token(token):
-    choices = ['replace', 'extra', 'eliminate', 'transposition']
-    choices_possibilities = [50, 15, 15, 20]
-    noise_type = random.choices(choices, weights=choices_possibilities)[0]
-
-    random_index = random.randint(0, len(token) - 1)
-
-    if noise_type == 'replace':
-        return replace_noise(token, random_index)
-    elif noise_type == 'extra':
-        return extra_noise(token, random_index)
-    elif noise_type == 'eliminate':
-        return eliminate_noise(token, random_index)
-    else:
-        return transposition_noise(token, random_index)
-
-
-def noisy_text(tokens, maximum_noisy_token_rate=0.3):
-    for i, token in enumerate(tokens):
-        noise_possibility = min(maximum_noisy_token_rate, len(token) / 15)
-        if len(token) > 1 and random.random() < noise_possibility:
-            tokens[i] = change_token(token)
-    return tokens
-
-
 if __name__ == '__main__':
     # Read all text files and concat them in a single long string
     print('Data is loading ...')
     DATA_DIRECTORY = '..\\data\\wikipedia_raw'
     text = ''
-    i = 0
     for file_path in os.listdir(DATA_DIRECTORY):
         if file_path.endswith('.txt'):
-            i += 1
             text += open(os.path.join(DATA_DIRECTORY, file_path), mode='r', encoding='utf-8').read() + '\n'
-
-        if i > 50:
-            break
     print('Data loaded successfully.')
 
     # Do pre-processing on whole text
     english_tokenized = preprocess(text)
-
-    # Generate some noise on dataset records to make incorrect words
-    noisy_tokenized = [noisy_text(tokens.copy()) for tokens in english_tokenized]
-    save_csv(path='..\\data\\dataset.csv', column_names=['noise_sentence', 'label'],
-             first_column=noisy_tokenized, second_column=english_tokenized)
-    print('The final noisy sentences and their labels are available in dataset.csv file!')
