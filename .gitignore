@@ -1,6 +1,16 @@
+# Obsidiian
 .obsidian
+
+# Python virtual environment
 venv
+
+# Datasets 
 examples
 wikipedia_raw
-.idea
 *.csv
+
+# Jetbrains
+.idea
+
+# Mac
+.DS_Store
