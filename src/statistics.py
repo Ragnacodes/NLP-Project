@@ -86,7 +86,7 @@ if __name__ == '__main__':
 
     # Sample Data
     print("Reading the dataset.csv file...")
-    csv_samples = load_samples('examples/dataset.csv')
+    csv_samples = load_samples('data/dataset.csv')
 
     # Create the word list
     print("Calculating the word list for the dataset...")
