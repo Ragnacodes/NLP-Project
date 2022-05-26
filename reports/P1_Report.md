@@ -108,6 +108,8 @@ It should be about 45MB with the default wordlist.
 
 - Kaggle spell dataset: It is a CSV file; the first column is a correct word. The second column is the word with a dictation issue.
 
+- sample dataset is saved on this [link](https://drive.google.com/drive/folders/1I4XX3PjHT88RxuCAlYhwA34n_z9djVQ9?usp=sharing) .
+
 ## Preprocessing
 
 - `src/preprocessing.py` contains any preprocessing steps to convert raw data to cleaned data.
