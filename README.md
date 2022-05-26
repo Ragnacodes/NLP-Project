@@ -1,32 +1,43 @@
 # NLP-Project
 
-Natural Processing Language Project
+Natural Processing Language Project - IUST 2022
+
+## Overview
+
+Spelling correction is **a well-known task in Natural Language Processing (NLP)**. Automatic spelling correction is essential for many NLP applications like web search engines, text summarization, sentiment analysis, etc.
 
 ## Directories
 
 - [Data Directory](data/README.md)
 - [Source Directory](src/README.md)
 
-## Overview
-
-(Here is an overview of the project.)
-
 ## Report Files
 
-- [Report file](P1_Report.pdf)
+You can open the markdown file or download the PDF files.
 
-## Dataset
-
-To update the data set use
-
-```bash
-echo "not implemented"
-```
+| The phase of the project | Markdown file                | PDF file              |
+| ------------------------ | ---------------------------- | --------------------- |
+| P1                       | [Open](reports/P1_Report.md) | [Open](P1_Report.pdf) |
 
 ## Run the code
 
-Here is some instructions to run the code
+### Update the dataset
+
+To update the dataset from scratch, you need to follow these steps:
+
+- Crawl the raw data.
+
+- Preprocess the data.
+
+- Add noise to the data.
+
+You can run these steps by a single command.
 
 ```bash
-echo "not implemented"
+# First of all, you need to provide your wordlist.
+# The default wordlist is `data/wordlist.txt`,
+# You can download English dictionary by running ./src/download_wordlist.sh
+./run.sh
 ```
+
+In the end, it will report some metrics and plot the histogram.

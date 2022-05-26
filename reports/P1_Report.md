@@ -63,23 +63,30 @@ if __name__ == '__main__':
 
 ```bash
 python3 src/crawler.py
+# Reading word list...
+# Downloading Wikipedia data...
+# <●●●●●●●●●●●●●●●●●●●                     > ♫♬  ♪♫♬ ♩♪♫♬ 1428/2999 [48%] in 6:29 (3.7/s, eta: 7:08) 
 ```
 
 After running this, the generated files under `data/` directory look like this.
 
 ```bash
-├── README.md
-├── data
-│   ├── kaggle_spell_dataset.csv
-│   ├── wikipedia_raw
-│   │   ├── AIDS.txt
-│   │   ├── AM.txt
-│   │   ├── African-American.txt
-│   │   ├── African.txt
-│   │   ├── American.txt
-│   │   ├── ...
-│   │   ├── ...
+tree .
+# The output
+# ├── README.md
+# ├── data
+# │   ├── kaggle_spell_dataset.csv
+# │   ├── wikipedia_raw
+# │   │   ├── AIDS.txt
+# │   │   ├── AM.txt
+# │   │   ├── African-American.txt
+# │   │   ├── African.txt
+# │   │   ├── American.txt
+# │   │   ├── ...
+# │   │   ├── ...
 ```
+
+It should be about 45MB with the default wordlist.
 
 ## ## Project Structure
 
@@ -157,10 +164,10 @@ These are the statistics metrics for our dataset.
 
 The histogram with stop words.
 
-![histogram_with_stopwords.png](/Users/snapp/university/NLP-Project/reports/images/histogram_with_stopwords.png)
+<img src="images/histogram_with_stopwords.png" title="" alt="histogram_with_stopwords.png" data-align="center">
 
 The histogram without stop words.
 
-![histogram_without_stopwords.png](/Users/snapp/university/NLP-Project/reports/images/histogram_without_stopwords.png)
+<img src="images/histogram_without_stopwords.png" title="" alt="histogram_without_stopwords.png" data-align="center">
 
 We consider as many different words as we can to collect various contents. As you can see, It is evident that the most repeated words are some frequent and common words in texts.
