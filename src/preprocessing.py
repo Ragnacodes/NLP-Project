@@ -1,9 +1,11 @@
+import nltk
 from nltk import sent_tokenize
 from nltk.tokenize import TreebankWordTokenizer
 import csv
 import re
 import os
 
+nltk.download('punkt')
 
 def tokenizer(sentence):
     return TreebankWordTokenizer().tokenize(sentence)
@@ -40,7 +42,7 @@ def save_csv(path, column_names, first_column, second_column=False):
 def preprocess(text):
     sentences = sent_tokenize(text)
     # Store separated sentences as the first preprocessing step
-    save_csv(path='..\\data\\sentences.csv', column_names=['sentence'], first_column=sentences)
+    save_csv(path='data/sentences.csv', column_names=['sentence'], first_column=sentences)
     print('sentences.csv file saved!')
 
     tokenized = []
@@ -52,7 +54,7 @@ def preprocess(text):
             tokenized.append(new_tokens)
 
     # Store separated english tokens as the second preprocessing step
-    save_csv(path='..\\data\\english_tokens.csv', column_names=['tokens'], first_column=tokenized)
+    save_csv(path='data/english_tokens.csv', column_names=['tokens'], first_column=tokenized)
     print('english_tokens.csv file saved!')
 
     return tokenized
@@ -61,7 +63,7 @@ def preprocess(text):
 if __name__ == '__main__':
     # Read all text files and concat them in a single long string
     print('Data is loading ...')
-    DATA_DIRECTORY = '..\\data\\wikipedia_raw'
+    DATA_DIRECTORY = 'data/wikipedia_raw'
     text = ''
     for file_path in os.listdir(DATA_DIRECTORY):
         if file_path.endswith('.txt'):

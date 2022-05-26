@@ -81,7 +81,7 @@ def noisy_text(tokens, maximum_noisy_token_rate=0.3):
 
 if __name__ == '__main__':
     # Load pre-processed data
-    with open('..\\data\\english_tokens.csv', newline='') as f:
+    with open('data/english_tokens.csv', newline='') as f:
         reader = csv.reader(f)
         data = list(reader)[1:]
     english_tokenized = [row[0].split(' ') for row in data]
@@ -89,6 +89,6 @@ if __name__ == '__main__':
 
     # Generate some noise on dataset records to make incorrect words
     noisy_tokenized = [noisy_text(tokens.copy()) for tokens in english_tokenized]
-    save_csv(path='..\\data\\dataset.csv', column_names=['noise_sentence', 'label'],
+    save_csv(path='data/dataset.csv', column_names=['noise_sentence', 'label'],
              first_column=noisy_tokenized, second_column=english_tokenized)
-    print('The final noisy sentences and their labels are available in dataset.csv file.')
+    print('The final noisy sentences and their labels are available in data/dataset.csv file.')
