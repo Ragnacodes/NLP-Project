@@ -7,6 +7,6 @@ idna==3.3
 requests==2.27.1
 urllib3==1.26.9
 Wikipedia-API==0.5.4
-nltk==3.3
+nltk==3.6.7
 matplotlib==3.5.2
 numpy==1.22.4
