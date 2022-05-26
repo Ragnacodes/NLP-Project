@@ -110,7 +110,21 @@ It should be about 45MB with the default wordlist.
 
 ## Preprocessing
 
-`empty for now.`
+- `src/preprocessing.py` contains any preprocessing steps to convert raw data to cleaned data.
+
+### Steps
+
+1. Open all text files that stored in `data/wikipedia_raw`. read and concat their texts in a long string. This step has done in the main method.
+
+2. Break the sentences of whole text. This step has been done by nltk.sent_tokenize method. result is saved on `data/sentences.csv`.
+ 
+3. Then we pass each sentence to our tokenizer method which takes a sentence and returns it tokens. This method is implemented by nltk.tokenize.TreeBankWordTokenizer(). We have choosed this tokenizer because it separates punctuations too. So we will have tokens including numbers and punctuations and words. 
+
+4. Now we can check each of tokens and filter the ones that only consists of english characters. we can handle this by a regex. Result of this step is saved on `data/english_words.csv`.
+
+- Since the task is spell correction, We need to correct stop words and short words too. so we haven't eliminated them. We don't need stemming too because we need the exact correct form of each word.
+
+- We have implemented some helpful methods for our preprocessing. list_to_string and save_csv are these ones.
 
 ## Labeling unit
 
@@ -118,7 +132,24 @@ We merged all of the contents of Wikipedia and considered every single sentence 
 
 ### Adding noise to data
 
-`empty for now.`
+This is an important part of phase1 of our project. The goal is to make some typical misspelled words so we can fit the data to a model, since we have the correct words either. This is implemented in `src/noise_generation.py`.
+
+1. As you can guess, First of all we should load the cleaned data from `english_tokens.csv` and store it in a big list.
+
+2. We have devided each sentence to its words by only using .split(' '). Because this clean data only separates the tokens with ' ' character.
+
+3. We iterate all sentences and pass it's tokens to noist_text() method. this method needs a maximum noise rate that now we set that to 0.3. this means that the maximum probability of a token for being noisy is 0.3.
+
+4. In noisy_text() method we decide whether a token benefits noise or not. the possibility of that is dependent ofthe token size too, And for shorter words it is lower surely.
+
+5. Then if the token is chosen to be noisy, We call change_token() for that. In this method a random index of the token is picked and we decide the noise algorithm by non-equal chance. this has some constand probabilities too. these are the algorithms:
+
+- replace_noise: this method replaces the indexed character with a random character around that on keyboard.
+- extra_noise: adds a random character to choosen index of the token.
+- eliminate_noise: removes indexed character.
+- transposition_noise: changes the position of the indexed character with the last character before that.
+
+6. Save the new mistaken sentences as the first column and the correct sentences as the second column of `data\dataset.csv` file. Which is the final dataset file. 
 
 ## Statistics
 
