@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Installing packages..."
 # Install python3
 sudo apt update
@@ -22,4 +24,10 @@ python3 ./src/noise_generation.py
 
 echo "Start statistics script..."
 python3 ./src/statistics.py
+
+echo "Installing FastAPI"
+pip install fastapi
+
+echo "Installing Uvicorn"
+pip install "uvicorn[standard]"
 
