@@ -1,6 +1,8 @@
 # Obsidiian
 .obsidian
 
+# Python cache
+**/__pycache__/**
 # Python virtual environment
 venv
 
